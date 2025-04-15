@@ -1,0 +1,35 @@
+""" Map leader to space ---------------------
+let mapleader=" "
+
+set relativenumber
+set number
+set clipboard=unnamed
+set clipboard^=ideaput
+set scrolloff=5
+set ideajoin
+set ideastatusicon=gray
+set idearefactormode=keep
+
+set easymotion
+set which-key
+set surround
+set commentary
+set ReplaceWithRegister
+set argtextobj
+set highlightedyank
+set matchit
+
+let b:match_words = '<:>,<tag>:</tag>'
+
+" mappings
+map <leader>ee :NERDTreeToggle<CR>
+map <leader>ef :NERDTreeFind<CR>
+map K <Action>(ShowHoverInfo)
+map [d <Action>(GotoPreviousError)
+map ]d <Action>(GotoNextError)
+map <leader>gu <Action>(ShowUsages)
+
+" easymotion
+map <leader> <Plug>(easymotion-prefix)
+
+inoremap jk <Esc>
