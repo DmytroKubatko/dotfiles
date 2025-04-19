@@ -1,3 +1,14 @@
-dark-mode: true
+dark-mode: false
 dirty-commits: false
 vim: true
+chat-language: "en"
+code-theme: "monokai"
+user-input-color: "#98BB6C"
+tool-output-color: "#E6C384"
+tool-warning-color: "#FF9E3B"
+tool-error-color: "#E82424"
+assistant-output-color: "#7FB4CA"
+completion-menu-bg-color: "#16161D"
+completion-menu-current-bg-color: "#2D4F67"
+completion-menu-current-color: "#FFA066"
+completion-menu-color: "#FFA066"
