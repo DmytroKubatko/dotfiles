@@ -12,3 +12,4 @@ completion-menu-bg-color: "#16161D"
 completion-menu-current-bg-color: "#2D4F67"
 completion-menu-current-color: "#FFA066"
 completion-menu-color: "#FFA066"
+auto_commits: false
