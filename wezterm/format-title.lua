@@ -1,26 +1,6 @@
 local wezterm = require("wezterm")
 
--- This will hold the configuration.
-local config = wezterm.config_builder()
-
--- This is where you actually apply your config choices.
-
--- For example, changing the initial geometry for new windows:
-config.initial_cols = 160
-config.initial_rows = 70
-
--- or, changing the font size and color scheme.
-config.font_size = 18
-config.font = wezterm.font("Liga SFMono Nerd Font")
-
-config.window_padding = {
-	left = 0,
-	right = 0,
-	top = 0,
-	bottom = 0,
-}
-
-config.color_scheme = "Kanagawa (Gogh)"
+local config = {}
 
 local process_icons = {
 	["bash"] = wezterm.nerdfonts.cod_terminal_bash,
@@ -92,8 +72,7 @@ local function format_title(tab)
 		active_title = active_title:gsub("^([^ ]+) .*", "%1")
 	end
 
-	local description = (not active_title or active_title == cwd) and "~" or active_title
-	return string.format(" %s %s/ %s ", process, cwd, description)
+	return string.format("%s  /%s ", process, cwd)
 end
 
 -- Determine if a tab has unseen output since last visited
@@ -117,54 +96,23 @@ local function get_tab_title(tab)
 	return format_title(tab)
 end
 
--- Convert arbitrary strings to a unique hex color value
--- Based on: https://stackoverflow.com/a/3426956/3219667
-local function string_to_color(str)
-	-- Convert the string to a unique integer
-	local hash = 0
-	for i = 1, #str do
-		hash = string.byte(str, i) + ((hash << 5) - hash)
-	end
-
-	-- Convert the integer to a unique color
-	local c = string.format("%06X", hash & 0x00FFFFFF)
-	return "#" .. (string.rep("0", 6 - #c) .. c):upper()
-end
-
-local function select_contrasting_fg_color(hex_color)
-	-- Note: this could use `return color:complement_ryb()` instead if you prefer or other builtins!
-
-	local color = wezterm.color.parse(hex_color)
-	---@diagnostic disable-next-line: unused-local
-	local lightness, _a, _b, _alpha = color:laba()
-	if lightness > 55 then
-		return "#000000" -- Black has higher contrast with colors perceived to be "bright"
-	end
-	return "#FFFFFF" -- White has higher contrast
-end
-
 -- On format tab title events, override the default handling to return a custom title
 -- Docs: https://wezfurlong.org/wezterm/config/lua/window-events/format-tab-title.html
----@diagnostic disable-next-line: unused-local
-wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
+wezterm.on("format-tab-title", function(tab)
 	local title = get_tab_title(tab)
-	local color = string_to_color(get_cwd(tab))
 
 	if tab.is_active then
 		return {
 			{ Attribute = { Intensity = "Bold" } },
-			-- { Background = { Color = color } },
-			-- { Foreground = { Color = select_contrasting_fg_color(color) } },
 			{ Text = title },
 		}
 	end
 	if has_unseen_output(tab) then
 		return {
-			-- { Foreground = { Color = "#EBD168" } },
 			{ Text = title },
 		}
 	end
 	return title
 end)
--- Finally, return the configuration to wezterm:
+
 return config
