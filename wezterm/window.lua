@@ -10,6 +10,6 @@ config.window_padding = {
 	bottom = 10,
 }
 
-config.color_scheme = "Kanagawa (Gogh)"
+config.color_scheme = "Tokyo Night"
 
 return config
