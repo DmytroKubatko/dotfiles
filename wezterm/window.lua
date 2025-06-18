@@ -12,4 +12,11 @@ config.window_padding = {
 
 config.color_scheme = "Tokyo Night"
 
+-- control inactive pane dimming
+config.inactive_pane_hsb = {
+	hue = 1.0,
+	saturation = 1.0,
+	brightness = 0.5,
+}
+
 return config
