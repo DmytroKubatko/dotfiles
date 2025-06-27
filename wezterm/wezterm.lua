@@ -4,9 +4,8 @@ local windowConfig = require("window")
 local fontConfig = require("font")
 local formatTitle = require("format-title")
 local keysConfig = require("keys")
-local keyTables = require("key-tables")
 
-local config = lib.mergeTables(windowConfig, fontConfig, formatTitle, keysConfig, keyTables)
+local config = lib.mergeTables(windowConfig, fontConfig, formatTitle, keysConfig)
 
 wezterm.on("gui-startup", function(cmd)
 	-- Get the list of screens

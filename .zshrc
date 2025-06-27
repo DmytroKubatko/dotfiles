@@ -21,6 +21,9 @@ export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 export PATH=$PATH:/opt/homebrew/bin/nvim
 
 # Aliases
+#
+
+alias v='nvim'
 
 alias ls='eza'
 alias lsa='eza -la'
