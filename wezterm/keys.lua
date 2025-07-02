@@ -6,6 +6,8 @@ local config = {}
 config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 1000 }
 
 config.keys = {
+	{ key = "[", mods = "META", action = act.ActivateTabRelative(-1) },
+	{ key = "]", mods = "META", action = act.ActivateTabRelative(1) },
 	-- Meta+hjkl for direct pane navigation
 	{ key = "h", mods = "META", action = act.ActivatePaneDirection("Left") },
 	{ key = "j", mods = "META", action = act.ActivatePaneDirection("Down") },
