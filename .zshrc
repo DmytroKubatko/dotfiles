@@ -3,12 +3,8 @@ export EDITOR='nvim'
 
 # NVM - Lazy loaded for faster startup
 export NVM_DIR="$HOME/.nvm"
-nvm() {
-  unset -f nvm
-  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
-  nvm "$@"
-}
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
 # PATH exports
 if [ -d "/opt/homebrew/opt/ruby/bin" ]; then
@@ -54,3 +50,5 @@ alias gswc='git switch --create'
 # Initialize Starship prompt
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
