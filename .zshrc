@@ -20,6 +20,8 @@ export PATH=$PATH:/opt/homebrew/bin/nvim
 #
 
 alias v='nvim'
+alias cr='cursor'
+alias cl='claude'
 
 alias ls='eza'
 alias lsa='eza -la'
@@ -46,9 +48,25 @@ alias gp='git push'
 alias gst='git status'
 alias gsw='git switch'
 alias gswc='git switch --create'
+alias gsu='git diff --name-only --diff-filter=U'
 
 # Initialize Starship prompt
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# bun completions
+[ -s "/Users/dmitrijkubatko/.bun/_bun" ] && source "/Users/dmitrijkubatko/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# pnpm
+export PNPM_HOME="/Users/dmitrijkubatko/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
