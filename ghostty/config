@@ -1,0 +1,32 @@
+font-family = "Liga SFMono Nerd Font"
+font-size = 18
+
+theme = TokyoNight Moon
+
+cursor-style = block
+cursor-style-blink = false
+
+# keybindings
+
+# Pane navigation (alt+hjkl)
+keybind = alt+h=goto_split:left
+keybind = alt+j=goto_split:bottom
+keybind = alt+k=goto_split:top
+keybind = alt+l=goto_split:right
+
+# Pane splitting
+keybind = alt+minus=new_split:down
+keybind = alt+backslash=new_split:right
+
+# Pane management
+keybind = alt+x=close_surface
+keybind = alt+m=toggle_split_zoom
+
+# Maximize / fullscreen
+keybind = alt+ctrl+f=toggle_fullscreen
+
+# Send escape + carriage return
+keybind = shift+enter=text:\x1b\r
+
+# Hide mouse cursor while typing
+mouse-hide-while-typing = true
